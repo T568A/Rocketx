@@ -10,7 +10,6 @@ class Config
     protected function getSettingsFile()
     {
         $this->configFile = json_decode(file_get_contents('config/config.json'));
-        //TODO: проверить все переменные в конфиги через Swish - с выволом ошибки
         if (empty((array)$this->configFile)) {
             throw new Exception('Parse json error - ' . json_last_error_msg());
         }
@@ -18,7 +17,6 @@ class Config
 
     protected function getOptionsCli()
     {
-        // TODO: сменить название и подумать как переделать отвественность
         $options = [
             'd:' => 'domain:',
             't:' => 'template:',

@@ -25,12 +25,11 @@ class DataProcessing extends Config
 
         if (isset($this->optionsCli['help']) || isset($this->optionsCli['h'])) {
             ob_start();
-            require 'help.txt';
-            echo ob_get_clean();
+            require __DIR__ . '/../../help.txt';
+            fwrite(STDOUT, ob_get_clean());
         }
 
         if (isset($this->optionsCli['list']) || isset($this->optionsCli['l'])) {
-            //TODO: сменить на абсолютный путь (или посмотреть как лучше сделать относительный)
             foreach (new \DirectoryIterator(__DIR__ . $this->configFile->script->templatesDir) as $file) {
                 if (!$file->isDot()) {
                     fwrite(STDOUT, $file->getFilename());
@@ -48,7 +47,7 @@ class DataProcessing extends Config
             $this->configFile->script->nameTemplateFile = $this->template;
             return $this->configFile;
         } else {
-            return;
+            return false;
         }
     }
 }

@@ -1,3 +1,4 @@
--t --template   Name template NGINX
--d --domain     Domain Name Site
--l --list       Print template files
+-t --template   Set Name template NGINX
+-d --domain     Set Domain Name Site
+-l --list       Get template files
+-h --help       Get help
