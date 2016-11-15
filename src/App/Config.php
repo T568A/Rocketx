@@ -11,7 +11,7 @@ class Config
     {
         $this->configFile = json_decode(file_get_contents('config/config.json'));
         if (empty((array)$this->configFile)) {
-            throw new Exception('Parse json error - ' . json_last_error_msg());
+            throw new \Exception('Parse json error - ' . json_last_error_msg());
         }
     }
 

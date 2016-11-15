@@ -25,14 +25,14 @@ class Make
             require_once $file;
             return ob_get_clean();
         } else {
-            throw new Exception('Template not found!');
+            throw new \Exception('Template not found!');
         }
     }
 
     public function makeSiteDir()
     {
         if (!mkdir($this->config->script->baseSitesDir . $this->config->site->domain, 0770, true)) {
-            throw new Exception('The directory or file already exists!');
+            throw new \Exception('The directory or file already exists!');
         }
         return true;
     }
@@ -45,7 +45,7 @@ class Make
             // добавить путь к $file
             return file_put_contents($file, $content);
         } else {
-            throw new Exception('writeNginxConfigFile');
+            throw new \Exception('writeNginxConfigFile');
         }
     }
 
