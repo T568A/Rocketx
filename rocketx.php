@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/bootstrap/autoload.php';
 
-$obj = new \Rocketx\App\Config();
+$obj = new \Rocketx\App\DataProcessing();
 $config = $obj->getConfig();
 
 if (!empty($config)) {
