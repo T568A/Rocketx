@@ -7,7 +7,8 @@ class Config
     protected $configFile;
     protected $optionsCli;
 
-    protected function getSettingsFile() {
+    protected function getSettingsFile()
+    {
         $this->configFile = json_decode(file_get_contents('config/config.json'));
         //TODO: проверить все переменные в конфиги через Swish - с выволом ошибки
         if (empty((array)$this->configFile)) {
@@ -15,7 +16,8 @@ class Config
         }
     }
 
-    protected function getOptionsCli() {
+    protected function getOptionsCli()
+    {
         // TODO: сменить название и подумать как переделать отвественность
         $options = [
             'd:' => 'domain:',

@@ -6,16 +6,19 @@ class Make
 {
     private $config;
 
-    function __construct($config) {
+    function __construct($config)
+    {
         $this->config = $config;
     }
 
-    private function checkFileAndDir() {
+    private function checkFileAndDir()
+    {
 
         //если все хорошо вернуть true;
     }
 
-    public function getNginxConfig() {
+    public function getNginxConfig()
+    {
         $file = __DIR__ . '/templates/' . $this->config->script->nameTemplateFile;
         if (is_readable($file)) {
             ob_start();
@@ -26,14 +29,16 @@ class Make
         }
     }
 
-    public function makeSiteDir() {
+    public function makeSiteDir()
+    {
         if (!mkdir($this->config->script->baseSitesDir . $this->config->site->domain, 0770, true)) {
             throw new Exception('The directory or file already exists!');
         }
         return true;
     }
 
-    public function writeNginxConfigFile() {
+    public function writeNginxConfigFile()
+    {
         $content = $this->getNginxConfig();
         $file = $config->site->domain . '.conf';
         if (!empty($content) && !file_exists($file)) {
@@ -44,7 +49,8 @@ class Make
         }
     }
 
-    public function getConfig() {
+    public function getConfig()
+    {
         return $this->config;
     }
 }
