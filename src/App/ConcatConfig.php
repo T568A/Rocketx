@@ -2,7 +2,7 @@
 
 namespace Rocketx\App;
 
-class DataProcessing extends Config
+class ConcatConfig extends Config
 {
 
     private $domain;

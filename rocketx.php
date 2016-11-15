@@ -1,13 +1,12 @@
 <?php
 
 use Rocketx\App\{
-    DataProcessing, Make
+    ConcatConfig, Make
 };
 
 require_once __DIR__ . '/bootstrap/autoload.php';
 
-$obj = new DataProcessing();
-$config = $obj->getConfig();
+$config = (new ConcatConfig())->getConfig();
 
 if (!empty($config)) {
     $make = new Make($config);
