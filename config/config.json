@@ -1,0 +1,13 @@
+{
+    "script" : {
+        "baseSitesDir" : "test/",
+        "templatesDir": "/../../templates",
+        "errorDir" : "/var/log/"
+    },
+    "site" : {
+    },
+    "nginx" : {
+        "dirSitesAvailable" : "/etc/nginx/sites-available/",
+        "dirSitesEnabled" : " /etc/nginx/sites-enabled/"
+    }
+}

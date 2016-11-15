@@ -1,0 +1,3 @@
+-t --template   Name template NGINX
+-d --domain     Domain Name Site
+-l --list       Print template files
