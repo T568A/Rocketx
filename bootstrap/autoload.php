@@ -4,7 +4,8 @@ spl_autoload_register(function ($class) {
 
     $prefix = 'Rocketx\\';
 
-    $base_dir = __DIR__ . '/src/';
+    $base_dir = __DIR__ . '/../src/';
+    var_dump($base_dir);
 
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) !== 0) {
