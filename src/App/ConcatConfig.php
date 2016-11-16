@@ -22,19 +22,13 @@ class ConcatConfig extends Config
             $this->domain = $this->optionsCli['domain'] ?? $this->optionsCli['d'] ?? NULL;
             $this->template = $this->optionsCli['template'] ?? $this->optionsCli['t'] ?? NULL;
         }
-
+        
         if (isset($this->optionsCli['help']) || isset($this->optionsCli['h'])) {
-            ob_start();
-            require __DIR__ . '/../../help.txt';
-            fwrite(STDOUT, ob_get_clean());
+            $this->configFile->script->help = true;
         }
 
         if (isset($this->optionsCli['list']) || isset($this->optionsCli['l'])) {
-            foreach (new \DirectoryIterator(__DIR__ . $this->configFile->script->templatesDir) as $file) {
-                if (!$file->isDot()) {
-                    fwrite(STDOUT, $file->getFilename());
-                }
-            }
+            $this->configFile->script->list = true;
         }
     }
 
@@ -42,6 +36,11 @@ class ConcatConfig extends Config
     {
         $this->getSettingsFile();
         $this->getOptionsCli();
+
+        if (!empty($this->configFile->script->help) || !empty($this->configFile->script->list)) {
+            return $this->configFile;
+        }
+
         if (!empty($this->domain) && !empty($this->template)) {
             $this->configFile->site->domain = $this->domain;
             $this->configFile->script->nameTemplateFile = $this->template;
