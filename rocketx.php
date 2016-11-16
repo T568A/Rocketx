@@ -1,7 +1,7 @@
 <?php
 
 use Rocketx\App\{
-    ConcatConfig, Make
+    ConcatConfig, Make, PrintCli
 };
 
 require_once __DIR__ . '/bootstrap/autoload.php';
@@ -9,15 +9,9 @@ require_once __DIR__ . '/bootstrap/autoload.php';
 try {
     $config = (new ConcatConfig())->getConfig();
     if (!empty($config->script->help)) {
-        ob_start();
-        require __DIR__ . '/help.txt';
-        fwrite(STDOUT, ob_get_clean());
+        PrintCli::getHelp();
     } else if (!empty($config->script->list)) {
-        foreach (new \DirectoryIterator('templates') as $file) {
-            if (!$file->isDot()) {
-                fwrite(STDOUT, $file->getFilename());
-            }
-        }
+        PrintCli::getTemplateList($config->script->templatesDir);
     } else if (!empty($config)) {
         $make = new Make($config);
         $content = $make->getNginxConfig();
