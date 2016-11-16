@@ -5,8 +5,8 @@ namespace Rocketx\App;
 class Make
 {
     private $config;
-    public $pathSiteDir;
-    public $nameConfigFile;
+    private $pathSiteDir;
+    private $nameConfigFile;
 
     public function __construct($config)
     {
@@ -21,14 +21,13 @@ class Make
         if (!file_exists($this->pathSiteDir) && !file_exists($this->nameConfigFile)) {
             return true;
         } else {
-            return false;
+            throw new \Exception('File or Directory exists');
         }
     }
 
-    private function getNginxConfig()
+    public function getNginxConfig()
     {
         $file = __DIR__ . $this->config->script->templatesDir . '/' . $this->config->script->nameTemplateFile;
-        var_dump($file);
         if (is_readable($file)) {
             ob_start();
             require_once $file;
@@ -46,9 +45,8 @@ class Make
         return true;
     }
 
-    public function writeNginxConfigFile()
+    public function writeNginxConfigFile($content)
     {
-        $content = $this->getNginxConfig();
         if (!empty($content) && !file_exists($this->nameConfigFile)) {
             // add dirSitesAvailable
             return file_put_contents($this->nameConfigFile, $content);
