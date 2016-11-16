@@ -1,1 +1,1 @@
-<?= $config->site->domain ?>
+<?= $this->config->site->domain ?>

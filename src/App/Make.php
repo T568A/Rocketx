@@ -5,21 +5,30 @@ namespace Rocketx\App;
 class Make
 {
     private $config;
+    public $pathSiteDir;
+    public $nameConfigFile;
 
-    function __construct($config)
+    public function __construct($config)
     {
-        $this->config = $config;
+        $this->config           = $config;
+        $this->pathSiteDir      = $this->config->script->baseSitesDir . $this->config->site->domain;
+        $this->nameConfigFile   = $this->config->site->domain . '.conf';
     }
 
-    private function checkFileAndDir()
+    public function checkFileAndDir()
     {
-
-        //если все хорошо вернуть true;
+        // add dirSitesAvailable
+        if (!file_exists($this->pathSiteDir) && !file_exists($this->nameConfigFile)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function getNginxConfig()
+    private function getNginxConfig()
     {
-        $file = __DIR__ . '/templates/' . $this->config->script->nameTemplateFile;
+        $file = __DIR__ . $this->config->script->templatesDir . '/' . $this->config->script->nameTemplateFile;
+        var_dump($file);
         if (is_readable($file)) {
             ob_start();
             require_once $file;
@@ -31,7 +40,7 @@ class Make
 
     public function makeSiteDir()
     {
-        if (!mkdir($this->config->script->baseSitesDir . $this->config->site->domain, 0770, true)) {
+        if (!mkdir($this->pathSiteDir, 0770, true)) {
             throw new \Exception('The directory or file already exists!');
         }
         return true;
@@ -40,10 +49,9 @@ class Make
     public function writeNginxConfigFile()
     {
         $content = $this->getNginxConfig();
-        $file = $config->site->domain . '.conf';
-        if (!empty($content) && !file_exists($file)) {
-            // добавить путь к $file
-            return file_put_contents($file, $content);
+        if (!empty($content) && !file_exists($this->nameConfigFile)) {
+            // add dirSitesAvailable
+            return file_put_contents($this->nameConfigFile, $content);
         } else {
             throw new \Exception('writeNginxConfigFile');
         }

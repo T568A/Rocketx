@@ -12,7 +12,17 @@ try {
     if (!empty($config)) {
         $make = new Make($config);
         var_dump($make->getConfig());
+        echo '---TEST---' . PHP_EOL;
+        var_dump($make->checkFileAndDir());
+        var_dump($make->pathSiteDir);
+        var_dump($make->nameConfigFile);
+        echo '---TEST---' . PHP_EOL;
+        if ($make->checkFileAndDir()) {
+            echo "RUN!" . PHP_EOL;
+            $make->makeSiteDir();
+            $make->writeNginxConfigFile();
+        }
     }
 } catch (Exception $e) {
-    echo 'Error: ' .  $e->getMessage() . PHP_EOL;
+    fwrite(STDOUT, 'Error: ' .  $e->getMessage() . PHP_EOL);
 }
