@@ -1,8 +1,6 @@
 <?php
 
-use Rocketx\App\{
-    Config, Make, PrintCli
-};
+use Rocketx\App\{Config, Make, PrintCli};
 
 require_once __DIR__ . '/bootstrap/autoload.php';
 
@@ -20,7 +18,7 @@ try {
             $make->writeNginxConfigFile($content);
         }
     } else {
-        throw new \Exception('invalid options');
+        throw new \Exception('invalid options(main)');
     }
 } catch (\Exception $e) {
     fwrite(STDOUT, 'Error: ' . $e->getMessage() . PHP_EOL);

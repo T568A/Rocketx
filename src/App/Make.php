@@ -8,7 +8,7 @@ class Make
     private $pathSiteDir;
     private $nameConfigFile;
 
-    public function __construct($config)
+    public function __construct(\stdClass $config)
     {
         $this->config           = $config;
         $this->pathSiteDir      = $this->config->script->baseSitesDir . $this->config->site->domain;
@@ -21,7 +21,7 @@ class Make
         if (!file_exists($this->pathSiteDir) && !file_exists($this->nameConfigFile)) {
             return true;
         } else {
-            throw new \Exception('File or Directory exists');
+            throw new \Exception('The directory or file already exists!(checkFileAndDir)');
         }
     }
 
@@ -33,25 +33,27 @@ class Make
             require_once $file;
             return ob_get_clean();
         } else {
-            throw new \Exception('Template not found!');
+            throw new \Exception('Template not found!(getNginxConfig)');
         }
     }
 
     public function makeSiteDir()
     {
         if (!mkdir($this->pathSiteDir, 0770, true)) {
-            throw new \Exception('The directory or file already exists!');
+            throw new \Exception('The directory or file already exists!(makeSiteDir)');
         }
         return true;
     }
 
-    public function writeNginxConfigFile($content)
+    public function writeNginxConfigFile(string $content)
     {
         if (!empty($content) && !file_exists($this->nameConfigFile)) {
             // add dirSitesAvailable
-            return file_put_contents($this->nameConfigFile, $content);
+            if (!file_put_contents($this->nameConfigFile, $content)){
+                throw new \Exception('file write - fail!(writeNginxConfigFile)');
+            }
         } else {
-            throw new \Exception('writeNginxConfigFile');
+            throw new \Exception('file write - fail!(writeNginxConfigFile)');
         }
     }
 }

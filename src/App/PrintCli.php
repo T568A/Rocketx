@@ -11,7 +11,7 @@ class PrintCli
         fwrite(STDOUT, ob_get_clean());
     }
 
-    public static function getTemplateList($path)
+    public static function getTemplateList(string $path)
     {
         foreach (new \DirectoryIterator(__DIR__ . $path) as $file) {
             if (!$file->isDot()) {
