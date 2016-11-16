@@ -22,7 +22,7 @@ class ConcatConfig extends Config
             $this->domain = $this->optionsCli['domain'] ?? $this->optionsCli['d'] ?? NULL;
             $this->template = $this->optionsCli['template'] ?? $this->optionsCli['t'] ?? NULL;
         }
-        
+
         if (isset($this->optionsCli['help']) || isset($this->optionsCli['h'])) {
             $this->configFile->script->help = true;
         }

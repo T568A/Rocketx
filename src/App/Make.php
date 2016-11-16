@@ -54,9 +54,4 @@ class Make
             throw new \Exception('writeNginxConfigFile');
         }
     }
-
-    public function getConfig()
-    {
-        return $this->config;
-    }
 }

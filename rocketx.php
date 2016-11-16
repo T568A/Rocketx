@@ -28,6 +28,6 @@ try {
     } else {
         throw new \Exception('invalid options');
     }
-} catch (Exception $e) {
-    fwrite(STDOUT, 'Error: ' .  $e->getMessage() . PHP_EOL);
+} catch (\Exception $e) {
+    fwrite(STDOUT, 'Error: ' . $e->getMessage() . PHP_EOL);
 }
