@@ -7,19 +7,19 @@ class Make
 {
     private $config;
     private $pathSiteDir;
-    private $nameConfigFile;
+    private $fullNameConfigFile;
 
     public function __construct(\stdClass $config)
     {
-        $this->config           = $config;
-        $this->pathSiteDir      = $this->config->script->baseSitesDir . $this->config->site->domain;
-        $this->nameConfigFile   = $this->config->site->domain . '.conf';
+        $this->config               = $config;
+        $this->pathSiteDir          = $this->config->script->baseSitesDir . $this->config->site->domain;
+        $this->fullNameConfigFile   = $this->config->nginx->dirSitesAvailable . $this->config->site->domain . '.conf';
     }
 
     public function checkFileAndDir()
     {
         // add dirSitesAvailable
-        if (!file_exists($this->pathSiteDir) && !file_exists($this->nameConfigFile)) {
+        if (!file_exists($this->pathSiteDir) && !file_exists($this->fullNameConfigFile)) {
             return true;
         } else {
             throw new \Exception('The directory or file already exists!(checkFileAndDir)');
@@ -54,9 +54,9 @@ class Make
 
     public function writeNginxConfigFile(string $content)
     {
-        if (!empty($content) && !file_exists($this->nameConfigFile)) {
+        if (!empty($content) && !file_exists($this->fullNameConfigFile)) {
             // add dirSitesAvailable
-            if (!file_put_contents($this->nameConfigFile, $content)){
+            if (!file_put_contents($this->fullNameConfigFile, $content)){
                 throw new \Exception('file write - fail!(writeNginxConfigFile)');
             }
         } else {

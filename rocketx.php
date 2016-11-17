@@ -16,7 +16,7 @@ try {
         $content = $make->getNginxConfig();
         if ($make->checkFileAndDir() && !empty($content)) {
             $make->makeSiteDir();
-            $make->writeNginxConfigFile($content);
+//            $make->writeNginxConfigFile($content);
         }
     } else {
         throw new \Exception('invalid options(main)');
