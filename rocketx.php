@@ -1,7 +1,10 @@
+#!/usr/bin/env php
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
-use Rocketx\App\{Config, Make, PrintCli};
+use Rocketx\App\{
+    Config, Make, PrintCli
+};
 
 require_once __DIR__ . '/bootstrap/autoload.php';
 
@@ -16,7 +19,8 @@ try {
         $content = $make->getNginxConfig();
         if ($make->checkFileAndDir() && !empty($content)) {
             $make->makeSiteDir();
-//            $make->writeNginxConfigFile($content);
+            $make->writeNginxConfigFile($content);
+            $make->makeSymlink();
         }
     } else {
         throw new \Exception('invalid options(main)');

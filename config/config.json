@@ -1,6 +1,6 @@
 {
     "script" : {
-        "baseSitesDir" : "test/",
+        "baseSitesDir" : "/usr/share/nginx/",
         "templatesDir": "/../../templates",
         "errorDir" : "/var/log/",
         "user" : "www-data",
