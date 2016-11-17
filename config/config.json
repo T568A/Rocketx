@@ -10,6 +10,6 @@
     },
     "nginx" : {
         "dirSitesAvailable" : "/etc/nginx/sites-available/",
-        "dirSitesEnabled" : " /etc/nginx/sites-enabled/"
+        "dirSitesEnabled" : "/etc/nginx/sites-enabled/"
     }
 }

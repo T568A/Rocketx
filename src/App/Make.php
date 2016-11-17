@@ -16,7 +16,7 @@ class Make
         $this->config                       = $config;
         $this->pathSiteDir                  = $this->config->script->baseSitesDir . $this->config->site->domain;
         $this->fullNameConfigFile           = $this->config->nginx->dirSitesAvailable . $this->config->site->domain . '.conf';
-        $this->symlinkFullNameConfigFile    = $this->script->nginx->dirSitesEnabled . $this->config->site->domain . '.conf';
+        $this->symlinkFullNameConfigFile    = $this->config->nginx->dirSitesEnabled . $this->config->site->domain . '.conf';
         $this->fullNameTemplateFile         = __DIR__ . $this->config->script->templatesDir . '/' . $this->config->script->nameTemplateFile;
     }
 
