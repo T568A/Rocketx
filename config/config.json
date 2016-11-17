@@ -2,7 +2,9 @@
     "script" : {
         "baseSitesDir" : "test/",
         "templatesDir": "/../../templates",
-        "errorDir" : "/var/log/"
+        "errorDir" : "/var/log/",
+        "user" : "www-data",
+        "group" : "www-data"
     },
     "site" : {
     },

@@ -43,6 +43,12 @@ class Make
         if (!mkdir($this->pathSiteDir, 0770, true)) {
             throw new \Exception('The directory or file already exists!(makeSiteDir)');
         }
+        if (!chown($this->pathSiteDir, $this->config->script->user)) {
+            throw new \Exception('permission denied!(user - makeSiteDir)');
+        }
+        if (!chgrp($this->pathSiteDir, $this->config->script->group)) {
+            throw new \Exception('permission denied!(group - makeSiteDir)');
+        }
         return true;
     }
 
