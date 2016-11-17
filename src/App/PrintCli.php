@@ -16,7 +16,7 @@ class PrintCli
     {
         foreach (new \DirectoryIterator(__DIR__ . $path) as $file) {
             if (!$file->isDot()) {
-                fwrite(STDOUT, $file->getFilename());
+                fwrite(STDOUT, $file->getFilename() . PHP_EOL);
             }
         }
     }
