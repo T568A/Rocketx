@@ -11,11 +11,12 @@ class Logger
     public function __construct(string $path, string $message)
     {
         $this->fullNameLogFile = $path . 'rocketx.log';
-        $this->message = date('Y-m-d H:i:s') . ': ' . $message . PHP_EOL;
+        $this->message = $message . PHP_EOL;
     }
 
     public function writeLog()
     {
-        file_put_contents($this->fullNameLogFile, $this->message, FILE_APPEND);
+        syslog(LOG_ERR, 'Rocketx: ' . $this->message);
+        file_put_contents($this->fullNameLogFile, date('Y-m-d H:i:s') . ': ' . $this->message, FILE_APPEND);
     }
 }
