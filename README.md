@@ -1,4 +1,4 @@
-# Rocketx
+# Rocketx - Quick Configuration NGINX
 
 WARNING: use at your own risk 💀
 
