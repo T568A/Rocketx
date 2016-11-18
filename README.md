@@ -1,4 +1,6 @@
-# Rocketx - Quick Configuration NGINX
+# Rocketx
+
+Rocketx is a simple and quick configuration NGINX.
 
 WARNING: use at your own risk 💀
 
