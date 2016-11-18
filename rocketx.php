@@ -27,4 +27,5 @@ try {
     }
 } catch (\Exception $e) {
     fwrite(STDOUT, 'Error: ' . $e->getMessage() . PHP_EOL);
+    (new Logger($config->script->logDir, $e->getMessage()))->writeLog();
 }

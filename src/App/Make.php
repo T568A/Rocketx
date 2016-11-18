@@ -59,7 +59,7 @@ class Make
     {
         if (!empty($content) && !file_exists($this->fullNameConfigFile)) {
             // add dirSitesAvailable
-            if (!file_put_contents($this->fullNameConfigFile, $content)) {
+            if (!file_put_contents($this->fullNameConfigFile, $content, FILE_APPEND)) {
                 throw new \Exception('file write - fail!(writeNginxConfigFile)');
             }
         } else {

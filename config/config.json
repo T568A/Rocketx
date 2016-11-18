@@ -2,7 +2,7 @@
     "script" : {
         "baseSitesDir" : "/usr/share/nginx/",
         "templatesDir": "/../../templates",
-        "errorDir" : "/var/log/",
+        "logDir" : "/var/log/",
         "user" : "www-data",
         "group" : "www-data"
     },
