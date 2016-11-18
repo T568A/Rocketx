@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 
 use Rocketx\App\{
-    Config, Make, PrintCli
+    Config, Make, PrintCli, Logger
 };
 
 require_once __DIR__ . '/bootstrap/autoload.php';
