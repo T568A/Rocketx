@@ -33,8 +33,15 @@ example.tmp
 
 ```shell
 $ journalctl -b -p err
-
+...
 Nov 18 15:27:08 webserver php[7664]: Rocketx: Template not found!(getNginxConfig)
+```
+or
+
+```shell
+$ tail -f /var/log/rocketx.log
+...
+2016-11-18 15:27:08: Template not found!(getNginxConfig)
 ```
 
 ## Help
