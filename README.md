@@ -10,6 +10,7 @@ $ git clone https://github.com/T568A/Rocketx.git
 $ cd Rocketx
 $ chmod +x rocketx.php
 ```
+Edit [config file](https://github.com/T568A/Rocketx/blob/master/config/config.json)
 
 ## Examples
 
