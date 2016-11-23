@@ -1,27 +1,27 @@
 server {
-	charset utf-8;
-	listen 80;
+    charset utf-8;
+    listen 80;
 
-	server_name <?= $this->config->site->domain . ' www.' . $this->config->site->domain;?>;
-	root <?= $this->config->script->baseSitesDir, $this->config->site->domain;?>;
+    server_name <?= $this->config->site->domain . ' www.' . $this->config->site->domain;?>;
+    root <?= $this->config->script->baseSitesDir, $this->config->site->domain;?>;
 
-	index index.php;
+    index index.php;
 
-	location / {
-		try_files $uri $uri/ =404;
-	}
+    location / {
+        try_files $uri $uri/ =404;
+    }
 
-	location ~ \.php$ {
-		try_files $uri =404;
-		fastcgi_split_path_info ^(.+\.php)(/.+)$;
-		#include snippets/fastcgi-php.conf;
-		fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
-		fastcgi_index index.php;
-		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-		include fastcgi_params;
-	}
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        #include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
 
-	location ~ /\.ht {
-		deny all;
-	}
+    location ~ /\.ht {
+        deny all;
+    }
 }
