@@ -12,7 +12,7 @@ class Config
 
     private function getSettingsFile()
     {
-        $this->configFile = json_decode(file_get_contents('config/config.json'));
+        $this->configFile = json_decode(file_get_contents( __DIR__ . '/../../config/config.json'));
         if (empty((array)$this->configFile)) {
             throw new \Exception('Parse json error - ' . json_last_error_msg() . '(getSettingsFile)');
         }
